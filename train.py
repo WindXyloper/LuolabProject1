@@ -11,25 +11,15 @@ from model import create_model
 def parse_args():
   """解析训练专用参数"""
   parser = argparse.ArgumentParser(description='训练参数')
-  parser.add_argument('--model', type=str, default='cnn', 
-                      choices=['cnn', 'mlp'], help='模型架构')
-  parser.add_argument('--epochs', type=int, default=30, 
-                      help='训练轮数')
-  parser.add_argument('--batch_size', type=int, default=128,
-                      help='批次大小')
-  parser.add_argument('--lr', type=float, default=0.001,
-                      help='学习率')
-  parser.add_argument('--optimizer', type=str, default='adam',
-                      choices=['adam', 'sgd', 'rmsprop'],
-                      help='优化器选择')
-  parser.add_argument('--val_ratio', type=float, default=0.1,
-                      help='验证集比例')
-  parser.add_argument('--log_dir', type=str, default='runs',
-                      help='TensorBoard日志目录')
-  parser.add_argument('--save_dir', type=str, default='checkpoints',
-                      help='模型保存目录')
-  parser.add_argument('--checkpoint', type=str, default=None,
-                      help='加载的模型检查点路径')
+  parser.add_argument('--model', type=str, default='cnn', choices=['cnn', 'mlp'], help='模型架构')
+  parser.add_argument('--epochs', type=int, default=30, help='训练轮数')
+  parser.add_argument('--batch_size', type=int, default=128, help='批次大小')
+  parser.add_argument('--lr', type=float, default=0.001,help='学习率')
+  parser.add_argument('--optimizer', type=str, default='adam',choices=['adam', 'sgd', 'rmsprop'],help='优化器选择')
+  parser.add_argument('--val_ratio', type=float, default=0.1,help='验证集比例')
+  parser.add_argument('--log_dir', type=str, default='runs',help='TensorBoard日志目录')
+  parser.add_argument('--save_dir', type=str, default='checkpoints',help='模型保存目录')
+  parser.add_argument('--checkpoint', type=str, default=None,help='加载的模型检查点路径')
   return parser.parse_args()
 
 def train_epoch(model, loader, criterion, optimizer, device):
